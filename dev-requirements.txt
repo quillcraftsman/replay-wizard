@@ -1,0 +1,5 @@
+yamllint==1.32.0
+pylint==3.0.1
+pytest==7.4.3
+pytest-cov==4.1.0
+build==1.0.3
