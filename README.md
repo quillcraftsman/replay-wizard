@@ -87,7 +87,7 @@ This project was started with [#Backdrop Build](https://backdropbuild.com/v3/rep
 pip install replay-wizard
 ```
 
-See more in [Full Documentation](replaywizard.craftsman.lol/install.html)
+See more in [Full Documentation](https://replaywizard.craftsman.lol/install.html)
 
 ## Quickstart
 
@@ -140,23 +140,23 @@ This features will be built during 4 weeks.
 - python (library was tested with **3.10**, **3.11** versions)
 - pynput (this package use [LGPL-3.0 license](https://github.com/moses-palmer/pynput/blob/master/COPYING.LGPL) and used in this project as a third party library without modifications)
 
-See more in [Full Documentation](replaywizard.craftsman.lol/about.html#requirements)
+See more in [Full Documentation](https://replaywizard.craftsman.lol/about.html#requirements)
 
 ## Development Status
 
 - Package available soon on [PyPi](https://pypi.org/project/replay-wizard/)
 
-See more in [Full Documentation](replaywizard.craftsman.lol/about.html#development-status)
+See more in [Full Documentation](https://replaywizard.craftsman.lol/about.html#development-status)
 
 ## Contributing
 
 You are welcome! To easy start please check:
 - [Full Documentation][documentation_path]
 - [Contributing](CONTRIBUTING.md)
-- [Developer Documentation](replaywizard.craftsman.lol/dev_documentation.html)
+- [Developer Documentation](https://replaywizard.craftsman.lol/dev_documentation.html)
 - [Code of Conduct](CODE_OF_CONDUCT.md)
 - [Security Policy](SECURITY.md)
 - [Governance](GOVERNANCE.md)
 - [Support](SUPPORT.md)
 
-[documentation_path]: replaywizard.craftsman.lol
+[documentation_path]: https://replaywizard.craftsman.lol
