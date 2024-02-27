@@ -4,7 +4,7 @@ ReplayWizard
 ReplayWizard is a powerful automation tool designed to streamline your workflow by capturing and replaying your
 interactions with your computer
 
-Project on `GitHub <https://github.com/quillcraftsman/renpy-wizard>`_
+Project on `GitHub <https://github.com/quillcraftsman/replay-wizard>`_
 
 - :ref:`Mission`
 - :ref:`Open Source Project`
@@ -65,4 +65,4 @@ Development Status
 
 - |development_status|
 
-`Project on PyPi <https://pypi.org/project/renpy-wizard>`_
+`Project on PyPi <https://pypi.org/project/replay-wizard>`_
