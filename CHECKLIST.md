@@ -7,7 +7,7 @@
 - [x] [Features](https://github.com/libresource/open-source-checklist#features)
 - [x] [Requirements](https://github.com/libresource/open-source-checklist#requirements)
 - [x] [Development Status](https://github.com/libresource/open-source-checklist#development-status)
-- [ ] [Download Page](https://github.com/libresource/open-source-checklist#download-page)
+- [x] [Download Page](https://github.com/libresource/open-source-checklist#download-page)
 - [x] [Version Control Access](https://github.com/libresource/open-source-checklist#version-control-access)
 - [x] [Bug Tracker Access](https://github.com/libresource/open-source-checklist#bug-tracker-access)
 - [x] [Communication Channels](https://github.com/libresource/open-source-checklist#communication-channels)
@@ -15,12 +15,12 @@
 - - [ ] Mailing List
 - - [ ] Real-time chat
 - - [ ] Forum
-- [ ] [Developer Guidelines](https://github.com/libresource/open-source-checklist#developer-guidelines)
+- [x] [Developer Guidelines](https://github.com/libresource/open-source-checklist#developer-guidelines)
 - [x] [Documentation](https://github.com/libresource/open-source-checklist#documentation)
-- [ ] [Developer Documentation](https://github.com/libresource/open-source-checklist#developer-documentation)
+- [x] [Developer Documentation](https://github.com/libresource/open-source-checklist#developer-documentation)
 - [x] [Availability of Documentation](https://github.com/libresource/open-source-checklist#availability-of-documentation)
-- [ ] [FAQ](https://github.com/libresource/open-source-checklist#faq)
-- [ ] [Examples Output and Screenshots](https://github.com/libresource/open-source-checklist#examples-output-and-screenshots)
+- [x] [FAQ](https://github.com/libresource/open-source-checklist#faq)
+- [x] [Examples Output and Screenshots](https://github.com/libresource/open-source-checklist#examples-output-and-screenshots)
 - [x] [License](https://github.com/libresource/open-source-checklist#license)
 - [x] [Code of Conduct](https://github.com/libresource/open-source-checklist#code-of-conduct)
 - [x] [Security Policy](https://github.com/libresource/open-source-checklist#security-policy)
@@ -30,11 +30,11 @@
 - [x] [Support](https://github.com/libresource/open-source-checklist#support)
 
 [CI and CD](https://github.com/libresource/open-source-checklist#ci-and-cd)
-- [ ] Tests
-- [ ] Test Coverage
-- [ ] Test Coverage 100%
-- [ ] Linters
-- [ ] Build
-- [ ] Deploy
-- [ ] Build and Deploy documentation
+- [x] Tests
+- [x] Test Coverage
+- [x] Test Coverage 100%
+- [x] Linters
+- [x] Build
+- [x] Deploy
+- [x] Build and Deploy documentation
 - [ ] [New User Greetings](https://github.com/libresource/open-source-checklist#new-user-greetings)

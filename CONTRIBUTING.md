@@ -34,7 +34,7 @@ Additionally, the code should follow any stylistic and architectural guidelines
 prescribed by the project. In the absence of such guidelines, mimic the styles
 and patterns in the existing code-base.
 
-You can check [Developer Documentation](https://replaywizard.org) to easy start with code
+You can check [Developer Documentation](https://replaywizard.craftsman.lol/dev_documentation.html) to easy start with code
 
 [issues-path]: https://github.com/quillcraftsman/replay-wizard/issues
 [discussions-path]: https://github.com/quillcraftsman/replay-wizard/discussions
