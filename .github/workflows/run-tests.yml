@@ -26,7 +26,7 @@ jobs:
     - name: Setup pynput
       run: |
         echo $PYNPUT_BACKEND
-        export $PYNPUT_BACKEND:=dummy
+        export PYNPUT_BACKEND=dummy
         echo $PYNPUT_BACKEND
     - name: Test with pytest
       run: |
