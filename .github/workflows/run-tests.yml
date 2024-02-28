@@ -26,7 +26,7 @@ jobs:
     - name: Setup pynput
       run: |
         echo $DISPLAY
-        ENV DISPLAY=:0.0
+        export DISPLAY=:0.0
         echo $DISPLAY
     - name: Test with pytest
       run: |
