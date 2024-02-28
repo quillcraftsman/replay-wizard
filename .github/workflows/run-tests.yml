@@ -25,9 +25,9 @@ jobs:
         pip install -r dev-requirements.txt
     - name: Setup pynput
       run: |
-        echo $DISPLAY
-        export DISPLAY=:0.0
-        echo $DISPLAY
+        echo $PYNPUT_BACKEND
+        export $PYNPUT_BACKEND
+        echo $PYNPUT_BACKEND
     - name: Test with pytest
       run: |
         make coverage
