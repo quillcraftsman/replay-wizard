@@ -23,13 +23,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install -r dev-requirements.txt
-    - name: Setup pynput
-      run: |
-        echo $DISPLAY
-    - name: Run headless test
+    - name: Run pytest with xvfb
       uses: coactions/setup-xvfb@v1
       with:
         run: make coverage
-#    - name: Test with pytest
-#      run: |
-#        make coverage
