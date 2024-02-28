@@ -25,6 +25,5 @@ def put_a_action_dict():
     return {
         'value': 'a',
         'subtype': 'keyboard',
-        'timedelta': 0.1,
         'action': 'press'
     }

@@ -92,7 +92,8 @@ See more in [Full Documentation](https://replaywizard.craftsman.lol/install.html
 ## Quickstart
 
 ```python
-print('Empty yet')
+from replay_wizard.capturing import capture
+capture('one')
 ```
 
 ### More examples in [Full Documentation][documentation_path]

@@ -29,5 +29,4 @@ class Action(BaseModel):
 
     subtype: Subtypes
     value: str
-    timedelta: float
     action: ActionEnum = ActionEnum.PRESS

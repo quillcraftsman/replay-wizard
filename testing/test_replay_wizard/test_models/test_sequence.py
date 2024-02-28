@@ -1,19 +1,7 @@
 """
 Test sequence module
 """
-import pytest
 from replay_wizard.models import Action, Sequence, Subtypes
-
-
-@pytest.fixture
-def empty_sequence():
-    """
-    Empty sequence fixture
-    """
-    return Sequence(
-        name='open youtube',
-        actions=[]
-    )
 
 
 def test_full_sequence(put_a_action):

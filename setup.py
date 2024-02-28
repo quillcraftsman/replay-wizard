@@ -37,12 +37,12 @@ def get_value_from_package_info(line, value, old_value):
 PACKAGE_NAME = "replay_wizard"
 
 PROJECT_URLS = {
-    # 'Documentation': 'https://replaywizard.org',
+    'Documentation': 'https://replaywizard.craftsman.lol/',
     'Source': 'https://github.com/quillcraftsman/replay-wizard',
     'Tracker': 'https://github.com/quillcraftsman/replay-wizard/issues',
     'Release notes': 'https://github.com/quillcraftsman/replay-wizard/releases',
     'Changelog': 'https://github.com/quillcraftsman/replay-wizard/releases',
-    # 'Download': 'https://pypi.org/project/replay-wizard/',
+    'Download': 'https://pypi.org/project/replay-wizard/',
 }
 
 with open_local([PACKAGE_NAME, "package.py"]) as fp:
@@ -105,5 +105,5 @@ setup(
         "Topic :: Home Automation",
         "Topic :: Scientific/Engineering :: Artificial Intelligence",
     ],
-    project_urls= PROJECT_URLS,
+    project_urls=PROJECT_URLS,
 )

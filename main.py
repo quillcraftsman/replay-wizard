@@ -1,11 +1,7 @@
 """
 Manual run module
 """
-from pynput import keyboard
-from replay_wizard.capturing.keyboard import on_press
+from quickstart.main import main
 
-
-with keyboard.Listener(
-                on_press=on_press
-) as listener:
-    listener.join()
+if __name__ == '__main__':
+    main()

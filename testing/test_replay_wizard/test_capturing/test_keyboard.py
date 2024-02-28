@@ -5,15 +5,23 @@ import pytest
 from pynput.keyboard import Key, KeyCode
 
 from replay_wizard.capturing.errors import UnknownKeyError
-from replay_wizard.capturing.keyboard import on_press, key_to_value
-from replay_wizard.models import Action, Sequence, Subtypes, ActionEnum
+from replay_wizard.capturing.keyboard import on_press, key_to_value, on_release, on_key_input
+from replay_wizard.models import Action, Subtypes, ActionEnum
 
 
-def test_on_press():
+def test_on_key_input_exit(empty_sequence):
+    """
+    Test then exit key was inputted
+    """
+    result = on_key_input(empty_sequence, Key.esc, ActionEnum.PRESS)
+    assert result is False
+
+
+def test_on_press(empty_sequence):
     """
     Test press function
     """
-    sequence = Sequence(name='test on press')
+    sequence = empty_sequence
     assert len(sequence) == 0
     on_press(sequence, Key.enter)
     assert len(sequence) == 1
@@ -22,6 +30,23 @@ def test_on_press():
         value='enter',
         timedelta=0,
         action=ActionEnum.PRESS
+    )
+    assert result_action in sequence
+
+
+def test_on_release(empty_sequence):
+    """
+    Test release function
+    """
+    sequence = empty_sequence
+    assert len(sequence) == 0
+    on_release(sequence, Key.enter)
+    assert len(sequence) == 1
+    result_action = Action(
+        subtype=Subtypes.KEYBOARD,
+        value='enter',
+        timedelta=0,
+        action=ActionEnum.RELEASE
     )
     assert result_action in sequence
 
