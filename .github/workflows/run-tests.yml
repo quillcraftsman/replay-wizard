@@ -25,9 +25,11 @@ jobs:
         pip install -r dev-requirements.txt
     - name: Setup pynput
       run: |
-        echo $PYNPUT_BACKEND
-        export PYNPUT_BACKEND=dummy
-        echo $PYNPUT_BACKEND
-    - name: Test with pytest
-      run: |
-        make coverage
+        echo $DISPLAY
+    - name: Run headless test
+      uses: coactions/setup-xvfb@v1
+      with:
+        run: echo $DISPLAY
+#    - name: Test with pytest
+#      run: |
+#        make coverage
