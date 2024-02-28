@@ -1,1 +1,2 @@
 pynput==1.7.6
+pydantic==2.6.3

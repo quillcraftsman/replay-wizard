@@ -1,2 +1,5 @@
 [MAIN]
 ignore-paths=./replay_wizard/package.py
+disable=
+    W0621, #  Redefining name outer scope (pytest fixtures)
+    R0903, #  To few public methods
