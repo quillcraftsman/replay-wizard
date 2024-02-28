@@ -92,9 +92,7 @@ See more in [Full Documentation](https://replaywizard.craftsman.lol/install.html
 ## Quickstart
 
 ```python
-from replay_wizard import info
-
-print(info())
+print('Empty yet')
 ```
 
 ### More examples in [Full Documentation][documentation_path]
@@ -139,12 +137,13 @@ This features will be built during 4 weeks.
 
 - python (library was tested with **3.10**, **3.11** versions)
 - pynput (this package use [LGPL-3.0 license](https://github.com/moses-palmer/pynput/blob/master/COPYING.LGPL) and used in this project as a third party library without modifications)
+- pydantic
 
 See more in [Full Documentation](https://replaywizard.craftsman.lol/about.html#requirements)
 
 ## Development Status
 
-- Package available soon on [PyPi](https://pypi.org/project/replay-wizard/)
+- Package available on [PyPi](https://pypi.org/project/replay-wizard/)
 
 See more in [Full Documentation](https://replaywizard.craftsman.lol/about.html#development-status)
 

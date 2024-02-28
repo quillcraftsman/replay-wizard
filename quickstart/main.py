@@ -8,6 +8,6 @@ def main():
     ReplayWizard simple usage
     :return:
     """
-    from replay_wizard import info  # pylint: disable=import-outside-toplevel
+    from replay_wizard.models import Action  # pylint: disable=import-outside-toplevel
 
-    print(info())
+    print(Action)

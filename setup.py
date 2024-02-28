@@ -91,6 +91,7 @@ setup(
     ],
     install_requires=[
         'pynput==1.7.6',
+        'pydantic==2.6.3',
     ],
     python_requires=">=3",
     classifiers=[

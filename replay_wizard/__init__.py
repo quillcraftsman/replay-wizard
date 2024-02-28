@@ -1,4 +1,4 @@
 """
-PyGenesis package
+ReplayWizard package
 """
-from .main import info
+#from .capturing import capture
