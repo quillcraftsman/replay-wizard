@@ -29,7 +29,7 @@ jobs:
     - name: Run headless test
       uses: coactions/setup-xvfb@v1
       with:
-        run: echo $DISPLAY
+        run: make coverage
 #    - name: Test with pytest
 #      run: |
 #        make coverage
