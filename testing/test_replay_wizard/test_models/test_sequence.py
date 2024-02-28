@@ -63,3 +63,12 @@ def test_to_dict(empty_sequence, put_a_action, put_a_action_dict):
     ]
 
     assert result == empty_sequence.model_dump()
+
+
+def test_in(empty_sequence, put_a_action):
+    """
+    Test in method
+    """
+    assert (put_a_action in empty_sequence) is False
+    empty_sequence.add(put_a_action)
+    assert put_a_action in empty_sequence

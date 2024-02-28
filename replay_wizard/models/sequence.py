@@ -11,7 +11,7 @@ class Sequence(BaseModel):
     Action sequence
     """
     name: str
-    actions: List[Action]
+    actions: List[Action] = []
 
     def __len__(self):
         return len(self.actions)
@@ -24,3 +24,9 @@ class Sequence(BaseModel):
         :return: None
         """
         self.actions.append(new_action)
+
+    def __contains__(self, item):
+        """
+        in method
+        """
+        return item in self.actions

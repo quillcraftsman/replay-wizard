@@ -13,6 +13,14 @@ class Subtypes(str, Enum):
     MOUSE = 'mouse'
 
 
+class ActionEnum(str, Enum):
+    """
+    press or release
+    """
+    PRESS = 'press'
+    RELEASE = 'release'
+
+
 class Action(BaseModel):
     """
     Action model
@@ -22,3 +30,4 @@ class Action(BaseModel):
     subtype: Subtypes
     value: str
     timedelta: float
+    action: ActionEnum = ActionEnum.PRESS
