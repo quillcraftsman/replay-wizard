@@ -60,3 +60,16 @@ def test_in(empty_sequence, put_a_action):
     assert (put_a_action in empty_sequence) is False
     empty_sequence.add(put_a_action)
     assert put_a_action in empty_sequence
+
+
+def test_for(one_action_sequence, put_a_action):
+    """
+    Test for method
+    """
+    one_action_sequence.add(put_a_action)
+    one_action_sequence.add(put_a_action)
+    count = 0
+    for action in one_action_sequence:
+        count += 1
+        assert isinstance(action, Action)
+    assert count == len(one_action_sequence)
