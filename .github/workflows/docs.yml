@@ -44,9 +44,8 @@ jobs:
       - name: Build documentation with xvfb
         uses: coactions/setup-xvfb@v1
         with:
-          run: |
-            cd docs
-            make html
+          run: make html
+          working-directory: ./docs
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
