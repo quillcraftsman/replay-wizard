@@ -106,4 +106,5 @@ setup(
         "Topic :: Scientific/Engineering :: Artificial Intelligence",
     ],
     project_urls=PROJECT_URLS,
+    entry_points={"console_scripts": ["replay-wizard = replay_wizard.__main__:main"]},
 )
