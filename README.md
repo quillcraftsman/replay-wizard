@@ -92,8 +92,14 @@ See more in [Full Documentation](https://replaywizard.craftsman.lol/install.html
 ## Quickstart
 
 ```python
-from replay_wizard.capturing import capture
-capture('one')
+import time
+from quickstart.capturing import capture_actions
+from quickstart.replay import replay_actions
+
+if __name__ == '__main__':
+    capture_actions()
+    time.sleep(5)
+    replay_actions()
 ```
 
 ### More examples in [Full Documentation][documentation_path]
@@ -125,9 +131,9 @@ This features will be built during 4 weeks.
 - Capture mouse actions
 - Save mouse actions
 - Replay mouse actions
-- Capture keyboards actions
-- Save keyboards actions
-- Replay keyboards actions
+- Capture keyboards actions (Done)
+- Save keyboards actions (Done)
+- Replay keyboards actions (Done)
 - Capture environment 
 - Save environment 
 - Replay environment

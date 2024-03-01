@@ -3,7 +3,7 @@ Quickstart examples
 """
 
 
-def main():
+def capture_actions():
     """
     ReplayWizard simple usage
     :return:

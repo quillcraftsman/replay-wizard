@@ -1,7 +1,11 @@
 """
 Manual run module
 """
-from quickstart.main import main
+import time
+from quickstart.capturing import capture_actions
+from quickstart.replay import replay_actions
 
 if __name__ == '__main__':
-    main()
+    capture_actions()
+    time.sleep(5)
+    replay_actions()

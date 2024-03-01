@@ -16,6 +16,9 @@ class Sequence(BaseModel):
     def __len__(self):
         return len(self.actions)
 
+    def __iter__(self):
+        return iter(self.actions)
+
     def add(self, new_action: Action):
         """
         Add action to sequence
