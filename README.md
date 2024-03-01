@@ -91,15 +91,16 @@ See more in [Full Documentation](https://replaywizard.craftsman.lol/install.html
 
 ## Quickstart
 
-```python
-import time
-from quickstart.capturing import capture_actions
-from quickstart.replay import replay_actions
+### Capture Sequence
 
-if __name__ == '__main__':
-    capture_actions()
-    time.sleep(5)
-    replay_actions()
+```commandline
+replay-wizard capture openyoutube 
+```
+
+### Replay Sequence
+
+```commandline
+replay-wizard replay openyoutube -d 10
 ```
 
 ### More examples in [Full Documentation][documentation_path]

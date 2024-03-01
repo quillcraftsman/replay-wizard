@@ -1,4 +1,5 @@
 """
 ReplayWizard package
 """
-#from .capturing import capture
+from .capturing.capture import capture
+from .replay import replay
