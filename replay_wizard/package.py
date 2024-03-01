@@ -2,5 +2,5 @@
 Package info
 """
 name = 'replay-wizard'
-version = '0.0.2'
-status = '2 - Pre-Alpha'
+version = '0.1.0'
+status = '3 - Alpha'
