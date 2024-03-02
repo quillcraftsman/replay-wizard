@@ -29,3 +29,21 @@ def test_replay_action(put_a_action, mocked_keyboard_controller):
     with mock.patch('pynput.keyboard.Controller', mocked_keyboard_controller) as mock_controller:
         replay_action(put_a_action)
         mock_controller.clear()
+
+
+MOCKED_TIME = 1709386168.5847345
+
+
+def test_replay_time_sequence(true_time_sequence, put_a_action, mocked_keyboard_controller):
+    """
+    Test how to replay sequence with time
+    """
+    with mock.patch('time.time') as mock_time:
+        mock_time.return_value = MOCKED_TIME
+        true_time_sequence.add(put_a_action)
+        true_time_sequence.add(put_a_action)
+        with mock.patch(
+                'pynput.keyboard.Controller', mocked_keyboard_controller
+        ) as mock_controller:
+            replay_sequence(true_time_sequence, true_time=True)
+            mock_controller.clear()

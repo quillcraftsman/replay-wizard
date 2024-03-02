@@ -1,22 +1,10 @@
 """
 Test sequence module
 """
-from replay_wizard.models import Action, Sequence, Subtypes
+import pytest
+from pydantic import ValidationError
 
-
-def test_full_sequence(put_a_action):
-    """
-    Test full sequence data
-    """
-    put_b = Action(
-        subtype=Subtypes.KEYBOARD,
-        value='b',
-        timedelta=0.1,
-    )
-    Sequence(
-        name='input a then b',
-        actions=[put_a_action, put_b]
-    )
+from replay_wizard.models import Action
 
 
 def test_len(empty_sequence):
@@ -35,6 +23,21 @@ def test_add(empty_sequence, put_a_action):
     assert len(empty_sequence) == 1
 
 
+def test_add_true_time(true_time_sequence, put_a_action):
+    """
+    Test add method
+    """
+    true_time_sequence.add(put_a_action)
+
+
+def test_sequence_is_frozen(empty_sequence):
+    """
+    Test that sequence is frozen (immutable)
+    """
+    with pytest.raises(ValidationError):
+        empty_sequence.true_time = True
+
+
 def test_to_dict(empty_sequence, put_a_action, put_a_action_dict):
     """
     Test sequence to dict
@@ -42,6 +45,7 @@ def test_to_dict(empty_sequence, put_a_action, put_a_action_dict):
     result = {
         'name': 'open youtube',
         'actions': [],
+        # 'true_time': False,
     }
     assert result == empty_sequence.model_dump()
     empty_sequence.add(put_a_action)

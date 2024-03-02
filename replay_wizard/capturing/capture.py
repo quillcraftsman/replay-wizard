@@ -3,18 +3,21 @@ Capture process module
 """
 import json
 import pynput
-from replay_wizard.models import Sequence
+from replay_wizard.models import get_sequence
 from .keyboard import on_press, on_release
 
 
-def capture(name):
+def capture(name, true_time=False):
     """
     capture user actions
 
     :param name: sequence name
+    :param true_time: save or not sequence with true time. default = False
     """
+    Sequence = get_sequence(true_time=true_time)
     sequence = Sequence(
-        name=name
+        name=name,
+        true_time=true_time,
     )
 
     def on_press_handler(key):
