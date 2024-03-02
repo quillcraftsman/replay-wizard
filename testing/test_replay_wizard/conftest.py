@@ -2,7 +2,7 @@
 Pytest fixtures
 """
 from pytest import fixture
-from replay_wizard.models import Action, Subtypes, Sequence, ActionEnum
+from replay_wizard.models import Action, Subtypes, ActionEnum, get_sequence
 
 
 @fixture
@@ -36,9 +36,23 @@ def empty_sequence():
     """
     Empty sequence fixture
     """
+    Sequence = get_sequence()
     return Sequence(
         name='open youtube',
         actions=[]
+    )
+
+
+@fixture
+def true_time_sequence():
+    """
+    Empty sequence with true time fixture
+    """
+    TimeSequence = get_sequence(true_time=True)
+    return TimeSequence(
+        name='open youtube',
+        actions=[],
+        true_time=True,
     )
 
 
