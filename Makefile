@@ -38,3 +38,18 @@ sphinx-help:
 
 package_docs:
 	sphinx-apidoc -o docs/package replay_wizard/
+
+capture:
+	python main.py capture debug
+
+time_capture:
+	python main.py capture debug -t true
+
+replay:
+	python main.py replay debug -d 5
+
+time_replay:
+	python main.py replay debug -t true -d 5
+
+monitor_replay:
+	python main.py replay debug -t true -d 5 -m true

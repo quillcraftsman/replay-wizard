@@ -31,10 +31,20 @@ class MockListener:
     def __exit__(self, exc_type, exc_val, exc_tb):
         return False
 
+    def start(self):
+        """
+        Mock start method
+        """
+
 
 def test_capture():
     """
     Test capture functions with mock
     """
     with mock.patch('pynput.keyboard.Listener', MockListener):
-        capture('for_test')
+        sequence = capture('for_test')
+        assert sequence.name == 'for_test'
+
+    with mock.patch('pynput.keyboard.Listener', MockListener):
+        sequence = capture('for_test', non_blocking_mode=True)
+        assert sequence.name == 'for_test'

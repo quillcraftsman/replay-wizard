@@ -1,23 +1,22 @@
 """
 Capture process module
 """
-import json
 import pynput
+from replay_wizard.capturing.keyboard import on_press, on_release
 from replay_wizard.models import get_sequence
-from .keyboard import on_press, on_release
 
 
-def capture(name, true_time=False):
+def capture(name, true_time=False, non_blocking_mode=False):
     """
     capture user actions
 
     :param name: sequence name
     :param true_time: save or not sequence with true time. default = False
+    :param non_blocking_mode: use non-blocking threading mode. Default = false
     """
     Sequence = get_sequence(true_time=true_time)
     sequence = Sequence(
         name=name,
-        true_time=true_time,
     )
 
     def on_press_handler(key):
@@ -26,13 +25,15 @@ def capture(name, true_time=False):
     def on_release_handler(key):
         return on_release(sequence, key)
 
-    with pynput.keyboard.Listener(
+    if non_blocking_mode:
+        listener = pynput.keyboard.Listener(
             on_press=on_press_handler,
-            on_release=on_release_handler) as listener:
-        listener.join()
+            on_release=on_release_handler)
+        listener.start()
+    else:
+        with pynput.keyboard.Listener(
+                on_press=on_press_handler,
+                on_release=on_release_handler) as listener:
+            listener.join()
 
-    # save result
-    result_dict = sequence.model_dump()
-    file_name = f'{name}.sequence'
-    with open(file_name, 'w', encoding='utf-8') as f:
-        json.dump(result_dict, f)
+    return sequence

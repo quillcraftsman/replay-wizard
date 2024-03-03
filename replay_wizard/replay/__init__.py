@@ -1,4 +1,4 @@
 """
 Replay package
 """
-from .core import replay
+from .replay import replay
