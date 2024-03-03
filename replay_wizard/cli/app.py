@@ -28,7 +28,7 @@ def run_cli():
     parser.add_argument('mode', choices=[CAPTURE, REPLAY])  # positional argument
     parser.add_argument('sequence')
     parser.add_argument('-d', '--delay', default=0, type=int)
-    parser.add_argument('-t', '--timedelta', default=True, type=bool)
+    parser.add_argument('-t', '--timedelta', default=False, type=bool)
     args = parser.parse_args()
 
     sequence = args.sequence

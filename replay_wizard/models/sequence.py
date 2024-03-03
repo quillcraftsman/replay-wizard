@@ -1,7 +1,6 @@
 """
 Sequence module
 """
-import time
 from typing import List
 from pydantic import BaseModel, ConfigDict
 from .action import Action
@@ -37,37 +36,3 @@ class Sequence(BaseModel):
         in method
         """
         return item in self.actions
-
-
-class TimeSequence(Sequence):
-    """
-    Sequence with time
-    """
-    timestamp_list: list = []
-
-    @staticmethod
-    def get_current_timestamp():
-        """
-        Get current timestamp
-        """
-        return time.time()
-
-    def add(self, new_action: Action):
-        super().add(new_action)
-        timestamp = self.get_current_timestamp()
-        self.timestamp_list.append(timestamp)
-
-    # def is_valid_timestamps(self):
-    #     """
-    #     Correct timestamp list
-    #     """
-    #     return len(self.timestamp_list) == len(self.actions)
-
-
-def get_sequence(true_time=False) -> Sequence:
-    """
-    Fabric method to get sequence object
-
-    :param true_time: use true time
-    """
-    return TimeSequence if true_time else Sequence

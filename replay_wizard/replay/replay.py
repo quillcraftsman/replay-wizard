@@ -1,14 +1,13 @@
 """
 Replay core module
 """
-# import itertools
 import time
-import json
-from replay_wizard.models import Action, get_sequence
+from replay_wizard.models import Action
+from replay_wizard.storage import load_from_file, DEFAULT_EXTENSION
 from .keyboard import push_button
 
 
-def replay(name, extension='sequence', true_time=False):
+def replay(name, extension=DEFAULT_EXTENSION, true_time=False):
     """
     Replay sequence from file
 
@@ -16,12 +15,13 @@ def replay(name, extension='sequence', true_time=False):
     :param extension: sequence file extension
     :param true_time: replay or not sequence with true time. default = False
     """
-    filename = f'{name}.{extension}'
-    with open(filename, 'r', encoding='utf-8') as f:
-        sequence_dict = json.load(f)
-        Sequence = get_sequence(true_time=true_time)
-        sequence = Sequence.model_validate(sequence_dict)
-        replay_sequence(sequence, true_time=true_time)
+    # filename = f'{name}.{extension}'
+    # with open(filename, 'r', encoding='utf-8') as f:
+    #     sequence_dict = json.load(f)
+    #     Sequence = get_sequence(true_time=true_time)
+    #     sequence = Sequence.model_validate(sequence_dict)
+    sequence = load_from_file(name, extension, true_time)
+    replay_sequence(sequence, true_time=true_time)
 
 
 def replay_action(action: Action):

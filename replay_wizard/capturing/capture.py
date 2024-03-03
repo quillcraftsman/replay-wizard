@@ -1,13 +1,13 @@
 """
 Capture process module
 """
-import json
 import pynput
+from replay_wizard.capturing.keyboard import on_press, on_release
 from replay_wizard.models import get_sequence
-from .keyboard import on_press, on_release
+from replay_wizard.storage import save_to_file, DEFAULT_EXTENSION
 
 
-def capture(name, true_time=False):
+def capture(name, extension=DEFAULT_EXTENSION, true_time=False):
     """
     capture user actions
 
@@ -31,8 +31,14 @@ def capture(name, true_time=False):
             on_release=on_release_handler) as listener:
         listener.join()
 
+    # listener = pynput.keyboard.Listener(
+    #     on_press=on_press_handler,
+    #     on_release=on_release_handler)
+    # listener.start()
+
     # save result
-    result_dict = sequence.model_dump()
-    file_name = f'{name}.sequence'
-    with open(file_name, 'w', encoding='utf-8') as f:
-        json.dump(result_dict, f)
+    # result_dict = sequence.model_dump()
+    # file_name = f'{name}.sequence'
+    # with open(file_name, 'w', encoding='utf-8') as f:
+    #     json.dump(result_dict, f)
+    save_to_file(sequence, extension)

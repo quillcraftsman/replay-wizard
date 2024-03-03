@@ -2,7 +2,7 @@
 Test core module
 """
 from unittest import mock
-from replay_wizard.replay.core import replay, replay_sequence, replay_action
+from replay_wizard.replay.replay import replay, replay_sequence, replay_action
 
 
 def test_replay(mocked_keyboard_controller):
