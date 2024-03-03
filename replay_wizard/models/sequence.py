@@ -14,7 +14,6 @@ class Sequence(BaseModel):
 
     name: str
     actions: List[Action] = []
-    # true_time: bool = False
 
     def __len__(self):
         return len(self.actions)

@@ -50,3 +50,6 @@ replay:
 
 time_replay:
 	python main.py replay debug -t true -d 5
+
+monitor_replay:
+	python main.py replay debug -t true -d 5 -m true

@@ -42,4 +42,9 @@ def test_capture():
     Test capture functions with mock
     """
     with mock.patch('pynput.keyboard.Listener', MockListener):
-        capture('for_test')
+        sequence = capture('for_test')
+        assert sequence.name == 'for_test'
+
+    with mock.patch('pynput.keyboard.Listener', MockListener):
+        sequence = capture('for_test', non_blocking_mode=True)
+        assert sequence.name == 'for_test'

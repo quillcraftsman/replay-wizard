@@ -4,6 +4,7 @@ App CLI module
 import time
 import argparse
 from replay_wizard import capture, replay
+from replay_wizard.storage import save_to_file, load_from_file
 
 CAPTURE = 'capture'
 REPLAY = 'replay'
@@ -29,19 +30,27 @@ def run_cli():
     parser.add_argument('sequence')
     parser.add_argument('-d', '--delay', default=0, type=int)
     parser.add_argument('-t', '--timedelta', default=False, type=bool)
+    parser.add_argument('-m', '--monitoring', default=False, type=bool)
     args = parser.parse_args()
 
-    sequence = args.sequence
+    sequence_name = args.sequence
     mode = args.mode
     delay = args.delay
     timedelta = args.timedelta
-
-    modes = {
-        CAPTURE: capture,
-        REPLAY: replay,
-    }
-
-    run = modes[mode]
+    is_monitoring = args.monitoring
 
     time.sleep(delay)
-    run(sequence, true_time=timedelta)
+
+    if mode == CAPTURE:
+        sequence = capture(sequence_name, timedelta)
+        save_to_file(sequence)
+    else:
+        sequence = load_from_file(sequence_name, true_time=timedelta)
+        # create duplicated monitoring sequence in monitoring mode
+        # to check how sequence will be replayed
+        if is_monitoring:
+            duplicated_sequence = capture('monitoring', timedelta, non_blocking_mode=True)
+        replay(sequence, timedelta)
+
+        if is_monitoring:
+            save_to_file(duplicated_sequence)

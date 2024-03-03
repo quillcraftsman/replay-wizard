@@ -3,25 +3,7 @@ Replay core module
 """
 import time
 from replay_wizard.models import Action
-from replay_wizard.storage import load_from_file, DEFAULT_EXTENSION
 from .keyboard import push_button
-
-
-def replay(name, extension=DEFAULT_EXTENSION, true_time=False):
-    """
-    Replay sequence from file
-
-    :param name: sequence name, without extension
-    :param extension: sequence file extension
-    :param true_time: replay or not sequence with true time. default = False
-    """
-    # filename = f'{name}.{extension}'
-    # with open(filename, 'r', encoding='utf-8') as f:
-    #     sequence_dict = json.load(f)
-    #     Sequence = get_sequence(true_time=true_time)
-    #     sequence = Sequence.model_validate(sequence_dict)
-    sequence = load_from_file(name, extension, true_time)
-    replay_sequence(sequence, true_time=true_time)
 
 
 def replay_action(action: Action):
@@ -67,7 +49,7 @@ def replay_time_sequence(sequence):
         replay_action(action)
 
 
-def replay_sequence(sequence, true_time=False):
+def replay(sequence, true_time=False):
     """
     Replay sequence
 
