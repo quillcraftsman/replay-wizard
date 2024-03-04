@@ -2,8 +2,15 @@
 Pytest fixtures
 """
 from pytest import fixture
-from replay_wizard.models import Action, Subtypes, ActionEnum, get_sequence
+from replay_wizard.models import Action, Subtypes, ActionEnum, get_sequence, MouseAction
 
+
+@fixture
+def mouse_action():
+    """
+    Mouse action
+    """
+    return MouseAction(x=0, y=0)
 
 @fixture
 def put_a_action():

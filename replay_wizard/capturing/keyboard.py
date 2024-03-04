@@ -1,6 +1,7 @@
 """
 Capturing keyboard events
 """
+import pynput
 from pynput.keyboard import Key, KeyCode
 
 from replay_wizard.capturing.errors import UnknownKeyError
@@ -23,7 +24,7 @@ def key_to_value(key):
     raise ValueError(key)
 
 
-def on_key_input(sequence, key, action_type: ActionEnum):
+def on_key_input(sequence, key, action_type: ActionEnum, exit_only=False):
     """
     Key input
 
@@ -35,31 +36,58 @@ def on_key_input(sequence, key, action_type: ActionEnum):
     if value == 'esc':
         return False
 
-    action = Action(
-        subtype=Subtypes.KEYBOARD,
-        value=key_to_value(key),
-        action=action_type,
-        timedelta=0,
-    )
-    sequence.add(action)
+    if not exit_only:
+        action = Action(
+            subtype=Subtypes.KEYBOARD,
+            value=key_to_value(key),
+            action=action_type,
+            timedelta=0,
+        )
+        sequence.add(action)
     return True
 
 
-def on_press(sequence, key):
+def on_press(sequence, key, exit_only=False):
     """
     Key was pressed
 
     :param sequence: current sequence
     :param key: pressed key
     """
-    return on_key_input(sequence, key, ActionEnum.PRESS)
+    return on_key_input(sequence, key, ActionEnum.PRESS, exit_only=exit_only)
 
 
-def on_release(sequence, key):
+def on_release(sequence, key, exit_only=False):
     """
     Key was release
 
     :param sequence: current sequence
     :param key: pressed key
     """
-    return on_key_input(sequence, key, ActionEnum.RELEASE)
+    return on_key_input(sequence, key, ActionEnum.RELEASE, exit_only=exit_only)
+
+
+def capture(sequence, non_blocking_mode=False, exit_only=False):
+    """
+    capture user keyboard actions
+
+    :param sequence: current sequence
+    :param non_blocking_mode: use non-blocking threading mode. Default = false
+    """
+
+    def on_press_handler(key):
+        return on_press(sequence, key, exit_only=exit_only)
+
+    def on_release_handler(key):
+        return on_release(sequence, key, exit_only=exit_only)
+
+    if non_blocking_mode:
+        listener = pynput.keyboard.Listener(
+            on_press=on_press_handler,
+            on_release=on_release_handler)
+        listener.start()
+    else:
+        with pynput.keyboard.Listener(
+                on_press=on_press_handler,
+                on_release=on_release_handler) as listener:
+            listener.join()

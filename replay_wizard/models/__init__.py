@@ -4,6 +4,12 @@ Models package
 from .action import Action, Subtypes, ActionEnum
 from .sequence import Sequence
 from .time_sequence import TimeSequence
+from .mouse import (
+    MouseAction,
+    ScrollAction,
+    ClickAction,
+    Button,
+)
 
 
 def get_sequence(true_time=False) -> Sequence:

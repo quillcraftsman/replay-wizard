@@ -1,7 +1,6 @@
 """
 Sequence module
 """
-from typing import List
 from pydantic import BaseModel, ConfigDict
 from .action import Action
 
@@ -13,7 +12,7 @@ class Sequence(BaseModel):
     model_config = ConfigDict(frozen=True)
 
     name: str
-    actions: List[Action] = []
+    actions: list = []
 
     def __len__(self):
         return len(self.actions)
@@ -35,3 +34,6 @@ class Sequence(BaseModel):
         in method
         """
         return item in self.actions
+
+    def __getitem__(self, item):
+        return self.actions[item]
