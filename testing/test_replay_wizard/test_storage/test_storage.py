@@ -8,7 +8,7 @@ from replay_wizard.models import get_sequence
 SEQUENCE_NAME = 'test'
 
 @fixture
-def file_sequence(put_a_action):
+def file_sequence(put_a_action, mouse_action):
     """
     Sequence to test saving
     """
@@ -18,6 +18,7 @@ def file_sequence(put_a_action):
         actions=[]
     )
     sequence.add(put_a_action)
+    sequence.add(mouse_action)
     return sequence
 
 
@@ -38,9 +39,14 @@ def test_create_filename():
     assert create_filename(SEQUENCE_NAME, 'other') == f'{SEQUENCE_NAME}.other'
 
 
-def test_load_from_file():
+def test_load_from_file(put_a_action, mouse_action):
     """
     Test load from file
     """
     sequence = load_from_file(SEQUENCE_NAME)
     assert sequence.name == SEQUENCE_NAME
+    assert len(sequence) == 2
+    action = sequence[0]
+    assert action == put_a_action
+    action = sequence[1]
+    assert action == mouse_action

@@ -5,7 +5,7 @@ import pynput
 from pynput.keyboard import Key, KeyCode
 
 from replay_wizard.capturing.errors import UnknownKeyError
-from replay_wizard.models import ActionEnum, Action, Subtypes
+from replay_wizard.models import ActionEnum, KeyboardAction
 
 
 def key_to_value(key):
@@ -37,8 +37,7 @@ def on_key_input(sequence, key, action_type: ActionEnum, exit_only=False):
         return False
 
     if not exit_only:
-        action = Action(
-            subtype=Subtypes.KEYBOARD,
+        action = KeyboardAction(
             value=key_to_value(key),
             action=action_type,
             timedelta=0,

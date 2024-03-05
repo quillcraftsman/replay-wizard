@@ -2,11 +2,11 @@
 Replay core module
 """
 import time
-from replay_wizard.models import Action
+from replay_wizard.models import KeyboardAction
 from .keyboard import push_button
 
 
-def replay_action(action: Action):
+def replay_action(action: KeyboardAction):
     """
     Replay one Action
     """

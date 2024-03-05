@@ -2,7 +2,7 @@
 Mouse actions
 """
 from enum import Enum
-from pydantic import BaseModel, ConfigDict
+from .action import Action
 
 
 class Button(str, Enum):
@@ -13,14 +13,13 @@ class Button(str, Enum):
     RIGHT = 'right'
 
 
-class MouseAction(BaseModel):
+class MouseAction(Action):
     """
     Mouse Action
     """
-    model_config = ConfigDict(frozen=True)
-
     x: int
     y: int
+    subtype: str = 'MouseAction'
 
 
 class ScrollAction(MouseAction):
@@ -29,6 +28,7 @@ class ScrollAction(MouseAction):
     """
     dx: int
     dy: int
+    subtype: str = 'ScrollAction'
 
 
 class ClickAction(MouseAction):
@@ -37,3 +37,4 @@ class ClickAction(MouseAction):
     """
     button: Button
     pressed: bool
+    subtype: str = 'ClickAction'

@@ -2,7 +2,7 @@
 Pytest fixtures
 """
 from pytest import fixture
-from replay_wizard.models import Action, Subtypes, ActionEnum, get_sequence, MouseAction
+from replay_wizard.models import KeyboardAction, ActionEnum, get_sequence, MouseAction
 
 
 @fixture
@@ -17,8 +17,7 @@ def put_a_action():
     """
     Simple action fixture
     """
-    return Action(
-        subtype=Subtypes.KEYBOARD,
+    return KeyboardAction(
         value='a',
         timedelta=0.1,
     )
@@ -29,8 +28,7 @@ def put_enter_action():
     """
     Simple action fixture
     """
-    action = Action(
-        subtype=Subtypes.KEYBOARD,
+    action = KeyboardAction(
         value='enter',
         timedelta=0.1,
         action=ActionEnum.RELEASE

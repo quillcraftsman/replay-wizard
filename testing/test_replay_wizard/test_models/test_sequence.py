@@ -4,7 +4,7 @@ Test sequence module
 import pytest
 from pydantic import ValidationError
 
-from replay_wizard.models import Action
+from replay_wizard.models import KeyboardAction
 
 
 def test_len(empty_sequence):
@@ -77,7 +77,7 @@ def test_for(one_action_sequence, put_a_action):
     count = 0
     for action in one_action_sequence:
         count += 1
-        assert isinstance(action, Action)
+        assert isinstance(action, KeyboardAction)
     assert count == len(one_action_sequence)
 
 
