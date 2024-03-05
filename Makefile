@@ -55,7 +55,7 @@ monitor_replay:
 	python main.py replay debug -t true -d 5 -m true
 
 capture_mouse:
-	python main.py capture debug -k false -mo true
+	python main.py capture debug -k false -mo true -t true
 
 capture_all:
-	python main.py capture debug -mo true
+	python main.py capture debug -mo true -t true
