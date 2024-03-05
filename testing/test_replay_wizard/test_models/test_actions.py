@@ -3,7 +3,7 @@ Test Action model module
 """
 import pytest
 from pydantic import ValidationError
-from replay_wizard.models import Subtypes, ActionEnum, Action
+from replay_wizard.models import ActionEnum, KeyboardAction
 
 
 def test_action(put_a_action):
@@ -11,7 +11,7 @@ def test_action(put_a_action):
     Test simple action
     """
     assert put_a_action.value == 'a'
-    assert put_a_action.subtype == Subtypes.KEYBOARD
+    assert put_a_action.subtype == 'KeyboardAction'
     assert put_a_action.action == ActionEnum.PRESS
 
 
@@ -34,13 +34,13 @@ def test_eq(put_a_action):
     """
     Test compare two actions
     """
-    same_action = Action(
+    same_action = KeyboardAction(
         subtype=put_a_action.subtype,
         value=put_a_action.value,
         action=put_a_action.action,
     )
     assert put_a_action == same_action
-    other_action = Action(
+    other_action = KeyboardAction(
         subtype=put_a_action.subtype,
         value=put_a_action.value,
         action=ActionEnum.RELEASE,

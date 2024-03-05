@@ -4,7 +4,6 @@ Storage package
 import json
 from replay_wizard.models import get_sequence
 
-
 DEFAULT_EXTENSION = 'sequence'
 
 
@@ -37,4 +36,10 @@ def load_from_file(sequence_name, extension=DEFAULT_EXTENSION, true_time=False):
         sequence_dict = json.load(f)
         Sequence = get_sequence(true_time=true_time)
         sequence = Sequence.model_validate(sequence_dict)
+        # for i in range(len(sequence)):
+        #     action = sequence[i]
+        #     if action['subtype'] == Subtypes.KEYBOARD:
+        #         sequence.actions[i] = Action(**action)
+        #     else:
+        #         sequence.actions[i] = MouseAction(**action)
         return sequence

@@ -2,15 +2,15 @@
 Replay core module
 """
 import time
-from replay_wizard.models import Action
-from .keyboard import push_button
+from .utils import get_replayer
 
 
-def replay_action(action: Action):
+def replay_action(action):
     """
     Replay one Action
     """
-    push_button(action)
+    replayer = get_replayer(action.subtype)
+    replayer(action)
 
 
 def replay_simple_sequence(sequence):

@@ -6,7 +6,7 @@ from pynput.keyboard import Key, KeyCode
 
 from replay_wizard.capturing.errors import UnknownKeyError
 from replay_wizard.capturing.keyboard import on_press, key_to_value, on_release, on_key_input
-from replay_wizard.models import Action, Subtypes, ActionEnum
+from replay_wizard.models import KeyboardAction, ActionEnum
 
 
 def test_on_key_input_exit(empty_sequence):
@@ -25,8 +25,7 @@ def test_on_press(empty_sequence):
     assert len(sequence) == 0
     on_press(sequence, Key.enter)
     assert len(sequence) == 1
-    result_action = Action(
-        subtype=Subtypes.KEYBOARD,
+    result_action = KeyboardAction(
         value='enter',
         timedelta=0,
         action=ActionEnum.PRESS
@@ -42,8 +41,7 @@ def test_on_release(empty_sequence):
     assert len(sequence) == 0
     on_release(sequence, Key.enter)
     assert len(sequence) == 1
-    result_action = Action(
-        subtype=Subtypes.KEYBOARD,
+    result_action = KeyboardAction(
         value='enter',
         timedelta=0,
         action=ActionEnum.RELEASE

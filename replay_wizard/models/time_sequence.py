@@ -3,7 +3,7 @@ Time sequence model
 """
 import time
 from .sequence import Sequence
-from .action import Action
+from .keyboard import KeyboardAction
 
 
 class TimeSequence(Sequence):
@@ -19,7 +19,7 @@ class TimeSequence(Sequence):
         """
         return time.time()
 
-    def add(self, new_action: Action):
+    def add(self, new_action: KeyboardAction):
         super().add(new_action)
         timestamp = self.get_current_timestamp()
         self.timestamp_list.append(timestamp)

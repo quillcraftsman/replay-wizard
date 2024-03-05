@@ -39,17 +39,17 @@ Features
 This features will be built during 4 weeks.
 20.03.2024 - deadline
 
-- Capture mouse actions
-- Save mouse actions
-- Replay mouse actions
-- Capture keyboards actions
-- Save keyboards actions
-- Replay keyboards actions
+- Capture mouse actions (Done)
+- Save mouse actions (Done)
+- Replay mouse actions (Done)
+- Capture keyboards actions (Done)
+- Save keyboards actions (Done)
+- Replay keyboards actions (Done)
 - Capture environment
 - Save environment
 - Replay environment
-- Console script
-- python library API
+- Console script (Done)
+- python library API (Done)
 
 Requirements
 ------------

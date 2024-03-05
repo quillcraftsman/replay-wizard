@@ -1,9 +1,8 @@
 """
 Sequence module
 """
-from typing import List
 from pydantic import BaseModel, ConfigDict
-from .action import Action
+from replay_wizard.models.utils import get_action
 
 
 class Sequence(BaseModel):
@@ -13,7 +12,19 @@ class Sequence(BaseModel):
     model_config = ConfigDict(frozen=True)
 
     name: str
-    actions: List[Action] = []
+    actions: list = []
+
+    @classmethod
+    def model_validate(cls, *args, **kwargs):
+        result = super(Sequence, cls).model_validate(
+            *args, **kwargs
+        )
+        for i, action in enumerate(result):
+            subtype = action['subtype']
+            action_cls = get_action(subtype)
+            result.actions[i] = action_cls(**action)
+
+        return result
 
     def __len__(self):
         return len(self.actions)
@@ -21,7 +32,7 @@ class Sequence(BaseModel):
     def __iter__(self):
         return iter(self.actions)
 
-    def add(self, new_action: Action):
+    def add(self, new_action):
         """
         Add action to sequence
 
@@ -35,3 +46,6 @@ class Sequence(BaseModel):
         in method
         """
         return item in self.actions
+
+    def __getitem__(self, item):
+        return self.actions[item]

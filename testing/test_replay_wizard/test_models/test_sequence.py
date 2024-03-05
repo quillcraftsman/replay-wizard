@@ -4,7 +4,7 @@ Test sequence module
 import pytest
 from pydantic import ValidationError
 
-from replay_wizard.models import Action
+from replay_wizard.models import KeyboardAction
 
 
 def test_len(empty_sequence):
@@ -38,7 +38,7 @@ def test_sequence_is_frozen(empty_sequence):
         empty_sequence.true_time = True
 
 
-def test_to_dict(empty_sequence, put_a_action, put_a_action_dict):
+def test_to_dict(empty_sequence, put_a_action, put_a_action_dict, mouse_action, mouse_action_dict):
     """
     Test sequence to dict
     """
@@ -49,9 +49,11 @@ def test_to_dict(empty_sequence, put_a_action, put_a_action_dict):
     }
     assert result == empty_sequence.model_dump()
     empty_sequence.add(put_a_action)
+    empty_sequence.add(mouse_action)
 
     result['actions'] = [
-        put_a_action_dict
+        put_a_action_dict,
+        mouse_action_dict,
     ]
 
     assert result == empty_sequence.model_dump()
@@ -75,5 +77,13 @@ def test_for(one_action_sequence, put_a_action):
     count = 0
     for action in one_action_sequence:
         count += 1
-        assert isinstance(action, Action)
+        assert isinstance(action, KeyboardAction)
     assert count == len(one_action_sequence)
+
+
+def test_getitem(one_action_sequence, put_a_action):
+    """
+    Test for []
+    """
+    sequence_put_a_action = one_action_sequence[0]
+    assert sequence_put_a_action == put_a_action

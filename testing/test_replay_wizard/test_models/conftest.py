@@ -11,6 +11,17 @@ def put_a_action_dict():
     """
     return {
         'value': 'a',
-        'subtype': 'keyboard',
+        'subtype': 'KeyboardAction',
         'action': 'press'
+    }
+
+@fixture
+def mouse_action_dict():
+    """
+    Mouse action as dict fixture
+    """
+    return {
+        'x': 0,
+        'y': 0,
+        'subtype': 'MouseAction',
     }

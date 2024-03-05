@@ -3,10 +3,10 @@ Keyboard replay functions
 """
 import pynput
 from pynput.keyboard import Key
-from replay_wizard.models import Action
+from replay_wizard.models import KeyboardAction
 
 
-def push_button(action: Action):
+def push_button(action: KeyboardAction):
     """
     Push keyboard button
     """
