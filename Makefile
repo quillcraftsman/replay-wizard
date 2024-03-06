@@ -40,22 +40,22 @@ package_docs:
 	sphinx-apidoc -o docs/package replay_wizard/
 
 capture:
-	python main.py capture debug
+	python capture.py debug
 
 time_capture:
-	python main.py capture debug -t true
+	python capture.py debug -t true
 
 replay:
-	python main.py replay debug -d 5
+	python replay.py debug -d 5
 
 time_replay:
-	python main.py replay debug -t true -d 5
+	python replay.py debug -t true -d 5
 
 monitor_replay:
-	python main.py replay debug -t true -d 5 -m true
+	python replay.py debug -t true -d 5 -m true
 
 capture_mouse:
-	python main.py capture debug -k false -mo true -t true
+	python capture.py debug -k false -mo true -t true
 
 capture_all:
-	python main.py capture debug -mo true -t true
+	python capture.py debug -mo true -t true

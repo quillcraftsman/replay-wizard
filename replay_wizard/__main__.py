@@ -1,15 +1,25 @@
 """
 Package console entrypoint
 """
-from replay_wizard.cli.app import run_cli
+from replay_wizard.cli import capture_cli, replay_cli, combine_cli
 
 
-def main():
+def capture():
     """
-    main function to run CLI for package
+    capture CLI
     """
-    run_cli()
+    capture_cli()
 
 
-if __name__ == "__main__":
-    main()
+def replay():
+    """
+    replay CLI
+    """
+    replay_cli()
+
+
+def combine():
+    """
+    combine CLI
+    """
+    combine_cli()
