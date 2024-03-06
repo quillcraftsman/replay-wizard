@@ -26,6 +26,14 @@ class Sequence(BaseModel):
 
         return result
 
+    def update(self, other):
+        """
+        Update method
+
+        :param other: other sequence
+        """
+        self.actions.extend(other.actions)
+
     def __len__(self):
         return len(self.actions)
 
@@ -49,3 +57,13 @@ class Sequence(BaseModel):
 
     def __getitem__(self, item):
         return self.actions[item]
+
+    @classmethod
+    def combine(cls, name, *sequences):
+        """
+        Combine many sequences to one
+        """
+        result = cls(name=name)
+        for sequence in sequences:
+            result.update(sequence)
+        return result

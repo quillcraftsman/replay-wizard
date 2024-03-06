@@ -9,14 +9,21 @@ To capture actions
 
 .. code-block:: bash
 
-   replay-wizard capture openyoutube
+   wizard-capture openyoutube
 
 To replay actions
 =================
 
 .. code-block:: bash
 
-   replay-wizard replay openyoutube -d 10
+   wizard-replay openyoutube -d 10
+
+To combine sequences
+=================
+
+.. code-block:: bash
+
+   wizard-combine three one two
 
 Using python
 ^^^^^^^^^^^^

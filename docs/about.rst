@@ -50,6 +50,7 @@ This features will be built during 4 weeks.
 - Replay environment
 - Console script (Done)
 - python library API (Done)
+- Combine sequences (Done)
 
 Requirements
 ------------

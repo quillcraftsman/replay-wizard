@@ -94,13 +94,19 @@ See more in [Full Documentation](https://replaywizard.craftsman.lol/install.html
 ### Capture Sequence
 
 ```commandline
-replay-wizard capture openyoutube 
+wizard-capture openyoutube
 ```
 
 ### Replay Sequence
 
 ```commandline
-replay-wizard replay openyoutube -d 10
+wizard-replay openyoutube -d 10
+```
+
+### Combine Sequences
+
+```commandline
+wizard-combine three one two
 ```
 
 ### More examples in [Full Documentation][documentation_path]
@@ -140,6 +146,7 @@ This features will be built during 4 weeks.
 - Replay environment
 - Console script (Done)
 - python library API (Done)
+- Combine sequences (Done)
 
 ## Requirements
 

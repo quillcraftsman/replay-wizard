@@ -65,6 +65,14 @@ def read(filename):
     with open(filename, "r", encoding="utf-8") as file:
         return file.read()
 
+
+def get_entrypoint(script_name, function_name):
+    """
+    Get console entrypoint
+    """
+    return f"{script_name} = replay_wizard.__main__:{function_name}"
+
+
 setup(
     name=package_pypi_name,
     version=package_version,
@@ -106,5 +114,9 @@ setup(
         "Topic :: Scientific/Engineering :: Artificial Intelligence",
     ],
     project_urls=PROJECT_URLS,
-    entry_points={"console_scripts": ["replay-wizard = replay_wizard.__main__:main"]},
+    entry_points={"console_scripts": [
+        get_entrypoint("wizard-capture", "capture"),
+        get_entrypoint("wizard-replay", "replay"),
+        get_entrypoint("wizard-combine", "combine"),
+    ]},
 )

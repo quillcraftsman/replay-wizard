@@ -1,10 +1,10 @@
 """
 Test sequence module
 """
+import copy
 import pytest
 from pydantic import ValidationError
-
-from replay_wizard.models import KeyboardAction
+from replay_wizard.models import KeyboardAction, Sequence
 
 
 def test_len(empty_sequence):
@@ -87,3 +87,22 @@ def test_getitem(one_action_sequence, put_a_action):
     """
     sequence_put_a_action = one_action_sequence[0]
     assert sequence_put_a_action == put_a_action
+
+
+def test_update(one_action_sequence):
+    """
+    test update method
+    """
+    other_sequence = copy.deepcopy(one_action_sequence)
+    one_action_sequence.update(other_sequence)
+    assert len(one_action_sequence) == 2
+
+
+def test_combine(one_action_sequence):
+    """
+    Test combine many sequences
+    """
+    other_sequence = copy.deepcopy(one_action_sequence)
+    new_sequence = Sequence.combine('combined',one_action_sequence, other_sequence)
+    assert new_sequence.name == 'combined'
+    assert len(new_sequence) == 2
