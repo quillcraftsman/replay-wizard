@@ -103,6 +103,6 @@ def test_combine(one_action_sequence):
     Test combine many sequences
     """
     other_sequence = copy.deepcopy(one_action_sequence)
-    new_sequence = Sequence.combine('combined',one_action_sequence, other_sequence, config=None)
+    new_sequence = Sequence.combine('combined',one_action_sequence, other_sequence)
     assert new_sequence.name == 'combined'
     assert len(new_sequence) == 2

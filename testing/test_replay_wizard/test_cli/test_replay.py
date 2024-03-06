@@ -3,6 +3,7 @@ Test CLI replay module
 """
 from unittest import mock
 from replay_wizard.cli.replay import replay_cli
+from replay_wizard.cli.capture import capture_cli
 
 
 def test_replay_cli(
@@ -22,6 +23,7 @@ def test_replay_cli(
                         'pynput.keyboard.Controller', mocked_keyboard_controller) as keyboard_mock:
                     with mock.patch(
                             'pynput.mouse.Controller', mocked_mouse_controller) as mouse_mock:
+                        capture_cli()
                         replay_cli()
                         keyboard_mock.clear()
                         mouse_mock.clear()

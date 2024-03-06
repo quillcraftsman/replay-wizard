@@ -59,11 +59,10 @@ class Sequence(BaseModel):
         return self.actions[item]
 
     @classmethod
-    def combine(cls, name, *sequences, config=None):
+    def combine(cls, name, *sequences):
         """
         Combine many sequences to one
         """
-        print(config)
         result = cls(name=name)
         for sequence in sequences:
             result.update(sequence)
