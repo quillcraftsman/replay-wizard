@@ -24,8 +24,6 @@ class TimeSequence(Sequence):
         timestamp = self.get_current_timestamp()
         self.timestamp_list.append(timestamp)
 
-    # def is_valid_timestamps(self):
-    #     """
-    #     Correct timestamp list
-    #     """
-    #     return len(self.timestamp_list) == len(self.actions)
+    def update(self, other):
+        super().update(other)
+        self.timestamp_list.extend(other.timestamp_list)

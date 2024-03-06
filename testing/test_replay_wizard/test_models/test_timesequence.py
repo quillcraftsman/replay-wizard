@@ -1,6 +1,7 @@
 """
 Tests for timesequence
 """
+import copy
 from unittest import mock
 
 MOCKED_TIME = 1709386168.5847783
@@ -56,9 +57,24 @@ def test_to_dict(true_time_sequence, put_a_action, put_a_action_dict):
         assert result == true_time_sequence.model_dump()
 
 
-# def test_is_valid_timestamps(true_time_sequence, put_a_action):
-#     assert true_time_sequence.is_valid_timestamps()
+def test_update(true_time_sequence, put_a_action):
+    """
+    Test update method
+    """
+    true_time_sequence.add(put_a_action)
+    other = copy.deepcopy(true_time_sequence)
+    true_time_sequence.update(other)
+    assert len(true_time_sequence) == 2
+    assert len(true_time_sequence.timestamp_list) == 2
+
+
+# def test_combine(true_time_sequence, put_a_action):
+#     """
+#     Test combine many sequences
+#     """
 #     true_time_sequence.add(put_a_action)
-#     assert true_time_sequence.is_valid_timestamps()
-#     true_time_sequence.timestamp_list.append(1)
-#     assert true_time_sequence.is_valid_timestamps() is False
+#     other_sequence = copy.deepcopy(true_time_sequence)
+#     new_sequence = TimeSequence.combine('combined', None, true_time_sequence, other_sequence)
+#     assert new_sequence.name == 'combined'
+#     assert len(new_sequence) == 2
+#     assert len(new_sequence.timestamp_list) == 2
