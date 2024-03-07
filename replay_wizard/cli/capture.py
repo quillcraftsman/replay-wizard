@@ -19,11 +19,10 @@ def capture_cli():
 
     sequence_name = args.sequence
     delay = args.delay
-    timedelta = args.timedelta
     keyboard = args.keyboard
     mouse = args.mouse
 
     time.sleep(delay)
 
-    sequence = capture(sequence_name, timedelta, keyboard=keyboard, mouse=mouse)
+    sequence = capture(sequence_name, keyboard=keyboard, mouse=mouse)
     save_to_file(sequence)

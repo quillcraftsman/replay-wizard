@@ -27,19 +27,13 @@ def save_to_file(sequence, extension=DEFAULT_EXTENSION):
         json.dump(result_dict, f)
 
 
-def load_from_file(sequence_name, extension=DEFAULT_EXTENSION, true_time=False):
+def load_from_file(sequence_name, extension=DEFAULT_EXTENSION):
     """
     Load sequence from file
     """
     filename = create_filename(sequence_name, extension)
     with open(filename, 'r', encoding='utf-8') as f:
         sequence_dict = json.load(f)
-        Sequence = get_sequence(true_time=true_time)
+        Sequence = get_sequence()
         sequence = Sequence.model_validate(sequence_dict)
-        # for i in range(len(sequence)):
-        #     action = sequence[i]
-        #     if action['subtype'] == Subtypes.KEYBOARD:
-        #         sequence.actions[i] = Action(**action)
-        #     else:
-        #         sequence.actions[i] = MouseAction(**action)
         return sequence

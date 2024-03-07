@@ -55,7 +55,7 @@ def true_time_sequence():
     """
     Empty sequence with true time fixture
     """
-    TimeSequence = get_sequence(true_time=True)
+    TimeSequence = get_sequence()
     return TimeSequence(
         name='open youtube',
         actions=[],

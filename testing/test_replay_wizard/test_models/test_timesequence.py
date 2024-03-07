@@ -4,6 +4,8 @@ Tests for timesequence
 import copy
 from unittest import mock
 
+from replay_wizard.models import get_sequence
+
 MOCKED_TIME = 1709386168.5847783
 
 
@@ -31,15 +33,11 @@ def test_add(true_time_sequence, put_a_action):
         assert timestamp == MOCKED_TIME
 
 
-def test_to_dict(true_time_sequence, put_a_action, put_a_action_dict):
+def test_to_dict(true_time_sequence, put_a_action, put_a_action_dict, sequence_dict):
     """
     Test sequence to dict
     """
-    result = {
-        'name': 'open youtube',
-        'actions': [],
-        'timestamp_list': []
-    }
+    result = sequence_dict
     assert result == true_time_sequence.model_dump()
 
     with mock.patch('time.time') as mock_time:
@@ -68,13 +66,34 @@ def test_update(true_time_sequence, put_a_action):
     assert len(true_time_sequence.timestamp_list) == 2
 
 
-# def test_combine(true_time_sequence, put_a_action):
-#     """
-#     Test combine many sequences
-#     """
-#     true_time_sequence.add(put_a_action)
-#     other_sequence = copy.deepcopy(true_time_sequence)
-#     new_sequence = TimeSequence.combine('combined', None, true_time_sequence, other_sequence)
-#     assert new_sequence.name == 'combined'
-#     assert len(new_sequence) == 2
-#     assert len(new_sequence.timestamp_list) == 2
+def test_model_validate(true_time_sequence, put_a_action):
+    """
+    Test model validate method
+    """
+    true_time_sequence.add(put_a_action)
+    sequence_dict = true_time_sequence.model_dump()
+    Sequence = get_sequence()
+    sequence = Sequence.model_validate(sequence_dict)
+    assert sequence == true_time_sequence
+
+
+def test_model_validate_sequences(one_action_sequence, true_time_sequence):
+    """
+    Then sequences it's actions
+    """
+    Sequence = get_sequence()
+    sequence = Sequence(name='combine')
+    sequence.add(one_action_sequence)
+    sequence.add(true_time_sequence)
+    assert len(sequence) == 2
+    sequence_dict = sequence.model_dump()
+    assert isinstance(sequence_dict, dict)
+
+    new_sequence = Sequence.model_validate(sequence_dict)
+    assert isinstance(new_sequence, Sequence)
+    assert len(new_sequence) == 2
+    one, _ = new_sequence.actions
+    assert isinstance(one, Sequence)
+    assert one.name == one_action_sequence.name
+    assert one.timestamp_list == one_action_sequence.timestamp_list
+    assert one.actions == one_action_sequence.actions

@@ -33,8 +33,6 @@ def get_parser(command_name):
     )
 
     parser.add_argument('sequence')
-    parser.add_argument('-t', '--timedelta', default=False, type=str2bool)
-
     return parser
 
 
@@ -44,5 +42,5 @@ def add_arguments(parser):
     """
     parser.add_argument('-d', '--delay', default=0, type=int)
     parser.add_argument('-k', '--keyboard', default=True, type=str2bool)
-    parser.add_argument('-mo', '--mouse', default=False, type=str2bool)
+    parser.add_argument('-mo', '--mouse', default=True, type=str2bool)
     return parser

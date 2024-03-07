@@ -2,25 +2,16 @@
 Replay core module
 """
 import time
-from .utils import get_replayer
+from .keyboard import push_button
+from .mouse import move_mouse, click_mouse, scroll_action
 
 
-def replay_action(action):
+def replay(action, true_time=False):
     """
     Replay one Action
     """
-    replayer = get_replayer(action.subtype)
+    replayer = get_replayer(action.subtype, true_time)
     replayer(action)
-
-
-def replay_simple_sequence(sequence):
-    """
-    Just repeat all actions
-
-    :param sequence: current sequence
-    """
-    for action in sequence:
-        replay_action(action)
 
 
 def create_timedelta_list(timestamp_list):
@@ -37,17 +28,17 @@ def create_timedelta_list(timestamp_list):
     return timedelta_list
 
 
-def one_thread_sleep_strategy(sequence):
+def compare(sequence, other_sequence):
     """
-    Calculate timedelta between actions.
-    Run action then sleep
+    Compare two sequences
+    """
+    td_list = create_timedelta_list(sequence.timestamp_list)
+    other_td_list = create_timedelta_list(other_sequence.timestamp_list)
+    deltas = []
+    for one, two in zip(td_list, other_td_list):
+        deltas.append(two-one)
 
-    :param sequence: current sequence
-    """
-    timedelta_list = create_timedelta_list(sequence.timestamp_list)
-    for action, delay in zip(sequence.actions, timedelta_list):
-        time.sleep(delay)
-        replay_action(action)
+    return sum(deltas)/len(deltas)
 
 
 def schedule_strategy(sequence):
@@ -75,42 +66,29 @@ def schedule_strategy(sequence):
         current_schedule_point = schedule_list[current_action_index]
         current_time = time.time()
         if current_time >= current_schedule_point:
-            replay_action(current_action)
+            replay(current_action, true_time=True)
             current_action_index += 1
 
 
-def replay_time_sequence(sequence, strategy=schedule_strategy):
+def replay_simple_sequence(sequence):
     """
-    Replay sequence with time
+    Just repeat all actions
 
     :param sequence: current sequence
-    :param strategy: how to replay time sequence
     """
-    strategy(sequence)
+    for action in sequence:
+        replay(action, true_time=False)
 
 
-def replay(sequence, true_time=False, strategy=schedule_strategy):
+def get_replayer(subtype: str, true_time=False):
     """
-    Replay sequence
-
-    :param sequence: sequence to replay
-    :param true_time: replay or not sequence with true time. default = False
-    :param strategy: how to replay time sequence
+    Get replayer for action subtype
     """
-    if true_time:
-        replay_time_sequence(sequence, strategy)
-    else:
-        replay_simple_sequence(sequence)
-
-
-def compare(sequence, other_sequence):
-    """
-    Compare two sequences
-    """
-    td_list = create_timedelta_list(sequence.timestamp_list)
-    other_td_list = create_timedelta_list(other_sequence.timestamp_list)
-    deltas = []
-    for one, two in zip(td_list, other_td_list):
-        deltas.append(two-one)
-
-    return sum(deltas)/len(deltas)
+    replayers = {
+        'KeyboardAction': push_button,
+        'MouseAction': move_mouse,
+        'ClickAction': click_mouse,
+        'ScrollAction': scroll_action,
+        'TimeSequence': schedule_strategy if true_time else replay_simple_sequence
+    }
+    return replayers[subtype]

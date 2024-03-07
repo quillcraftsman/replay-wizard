@@ -100,7 +100,7 @@ wizard-capture openyoutube
 ### Replay Sequence
 
 ```commandline
-wizard-replay openyoutube -d 10
+wizard-replay openyoutube -d 10 -t true
 ```
 
 ### Combine Sequences

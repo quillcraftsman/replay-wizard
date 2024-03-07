@@ -14,6 +14,7 @@ def replay_cli():
 
     parser = get_parser('wizard-replay')
     parser = add_arguments(parser)
+    parser.add_argument('-t', '--timedelta', default=False, type=str2bool)
     parser.add_argument('-m', '--monitoring', default=False, type=str2bool)
 
     args = parser.parse_args()
@@ -27,13 +28,12 @@ def replay_cli():
 
     time.sleep(delay)
 
-    sequence = load_from_file(sequence_name, true_time=timedelta)
+    sequence = load_from_file(sequence_name)
     # create duplicated monitoring sequence in monitoring mode
     # to check how sequence will be replayed
     if is_monitoring:
         duplicated_sequence = capture(
             'monitoring',
-            timedelta,
             non_blocking_mode=True,
             keyboard=keyboard,
             mouse=mouse
