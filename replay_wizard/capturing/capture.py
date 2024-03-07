@@ -6,7 +6,7 @@ from replay_wizard.capturing.mouse import capture as capture_mouse
 from replay_wizard.models import get_sequence
 
 
-def capture(name, true_time=False, non_blocking_mode=False, keyboard=True, mouse=False):
+def capture(name, non_blocking_mode=False, keyboard=True, mouse=True):
     """
     capture user actions
 
@@ -16,7 +16,7 @@ def capture(name, true_time=False, non_blocking_mode=False, keyboard=True, mouse
     :param keyboard: capture keyboard actions. default = True
     :param mouse: capture mouse actions. default = False
     """
-    Sequence = get_sequence(true_time=true_time)
+    Sequence = get_sequence()
     sequence = Sequence(
         name=name,
     )

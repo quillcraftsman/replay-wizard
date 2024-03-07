@@ -25,3 +25,17 @@ def mouse_action_dict():
         'y': 0,
         'subtype': 'MouseAction',
     }
+
+
+@fixture
+def sequence_dict():
+    """
+    Sequence dict fixture
+    """
+    result = {
+        'name': 'open youtube',
+        'actions': [],
+        'timestamp_list': [],
+        'subtype': 'TimeSequence',
+    }
+    return result

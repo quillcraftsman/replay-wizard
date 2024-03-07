@@ -16,7 +16,7 @@ To replay actions
 
 .. code-block:: bash
 
-   wizard-replay openyoutube -d 10
+   wizard-replay openyoutube -d 10 -t true
 
 To combine sequences
 =================

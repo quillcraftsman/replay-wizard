@@ -17,13 +17,12 @@ def combine_cli():
 
     sequence_name = args.sequence
     sequence_names = args.sequences
-    true_time = args.timedelta
 
     sequences = []
     for name in sequence_names:
-        sequence = load_from_file(name, true_time=true_time)
+        sequence = load_from_file(name)
         sequences.append(sequence)
 
-    sequence_cls = get_sequence(true_time)
+    sequence_cls = get_sequence()
     new_sequence = sequence_cls.combine(sequence_name, *sequences)
     save_to_file(new_sequence)
