@@ -60,6 +60,7 @@ def true_time_sequence():
         name='open youtube',
         actions=[],
         true_time=True,
+        start_time=0,
     )
 
 

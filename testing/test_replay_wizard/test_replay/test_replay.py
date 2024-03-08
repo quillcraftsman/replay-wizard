@@ -2,6 +2,8 @@
 Test core module
 """
 from unittest import mock
+
+from replay_wizard.models import get_sequence
 from replay_wizard.replay.replay import (
     replay,
     compare,
@@ -42,10 +44,16 @@ def test_replay_schedule_strategy_empty(true_time_sequence, mocked_keyboard_cont
             mock_controller.clear()
 
 
-def test_replay_schedule_strategy(true_time_sequence, put_a_action, mocked_keyboard_controller):
+def test_replay_schedule_strategy(put_a_action, mocked_keyboard_controller):
     """
     Test replay with schedule strategy
     """
+    TimeSequence = get_sequence()
+    true_time_sequence = TimeSequence(
+        name='open youtube',
+        actions=[],
+        true_time=True,
+    )
     true_time_sequence.add(put_a_action)
     with mock.patch(
             'pynput.keyboard.Controller', mocked_keyboard_controller

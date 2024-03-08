@@ -37,5 +37,6 @@ def sequence_dict():
         'actions': [],
         'timestamp_list': [],
         'subtype': 'TimeSequence',
+        'start_time': 0,
     }
     return result

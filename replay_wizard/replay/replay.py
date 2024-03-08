@@ -41,6 +41,34 @@ def compare(sequence, other_sequence):
     return sum(deltas)/len(deltas)
 
 
+# def schedule_strategy(sequence):
+#     """
+#     Thirst create schedule
+#     Then try to run action by schedule in cycle
+#
+#     :param sequence: current sequence
+#     """
+#     if len(sequence) == 0:
+#         return
+#     schedule_list = []
+#     old_start_time = sequence.timestamp_list[0]
+#     adjustment = 0.00018
+#     new_start_time = time.time() + adjustment
+#     delta_time = new_start_time - old_start_time
+#     for item in sequence.timestamp_list:
+#         new_item = item+delta_time
+#         schedule_list.append(new_item)
+#
+#     current_action_index = 0
+#     schedule_list_len = len(schedule_list)
+#     while current_action_index < schedule_list_len:
+#         current_action = sequence.actions[current_action_index]
+#         current_schedule_point = schedule_list[current_action_index]
+#         current_time = time.time()
+#         if current_time >= current_schedule_point:
+#             replay(current_action, true_time=True)
+#             current_action_index += 1
+
 def schedule_strategy(sequence):
     """
     Thirst create schedule
@@ -51,7 +79,7 @@ def schedule_strategy(sequence):
     if len(sequence) == 0:
         return
     schedule_list = []
-    old_start_time = sequence.timestamp_list[0]
+    old_start_time = sequence.start_time
     adjustment = 0.00018
     new_start_time = time.time() + adjustment
     delta_time = new_start_time - old_start_time
