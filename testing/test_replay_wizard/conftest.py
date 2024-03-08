@@ -14,6 +14,7 @@ def mouse_action():
     """
     return MouseAction(x=0, y=0)
 
+
 @fixture
 def put_a_action():
     """
