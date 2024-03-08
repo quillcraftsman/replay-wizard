@@ -14,6 +14,7 @@ def mouse_action():
     """
     return MouseAction(x=0, y=0)
 
+
 @fixture
 def put_a_action():
     """
@@ -60,6 +61,7 @@ def true_time_sequence():
         name='open youtube',
         actions=[],
         true_time=True,
+        start_time=0,
     )
 
 

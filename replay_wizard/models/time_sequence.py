@@ -3,6 +3,8 @@ Time sequence model
 """
 import time
 
+from pydantic import Field
+
 from .action import Action
 from .keyboard import KeyboardAction
 from .mouse import (
@@ -38,6 +40,7 @@ class TimeSequence(Action):
     actions: list = []
     timestamp_list: list = []
     subtype: str = 'TimeSequence'
+    start_time: float = Field(default_factory=time.time)
 
     def __len__(self):
         return len(self.actions)
