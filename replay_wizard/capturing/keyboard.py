@@ -32,7 +32,13 @@ def on_key_input(sequence, key, action_type: ActionEnum, exit_only=False):
     :param key: pressed key
     :param action: action type
     """
+
     value = key_to_value(key)
+    if value is None:
+        # Some keys haven't got char (shift for example)
+        # We just skip this event now
+        return True
+
     if value == 'esc':
         return False
 

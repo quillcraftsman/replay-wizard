@@ -17,6 +17,22 @@ def test_on_key_input_exit(empty_sequence):
     assert result is False
 
 
+def test_on_key_input_non_key(empty_sequence):
+    """
+    Test key input then key.char = None
+    """
+
+    class NotCharKey(KeyCode):
+        """
+        Some char without char
+        """
+        def __init__(self):
+            self.char = None
+
+    result = on_key_input(empty_sequence, NotCharKey(), ActionEnum.PRESS)
+    assert result is True
+
+
 def test_on_press(empty_sequence):
     """
     Test press function
