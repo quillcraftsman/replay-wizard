@@ -28,6 +28,14 @@ replay\_wizard.capturing.keyboard module
    :undoc-members:
    :show-inheritance:
 
+replay\_wizard.capturing.mouse module
+-------------------------------------
+
+.. automodule:: replay_wizard.capturing.mouse
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 

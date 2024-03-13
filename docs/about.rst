@@ -1,10 +1,5 @@
-ReplayWizard
-================
-
-ReplayWizard is a powerful automation tool designed to streamline your workflow by capturing and replaying your
-interactions with your computer
-
-Project on `GitHub <https://github.com/quillcraftsman/replay-wizard>`_
+About
+=====
 
 - :ref:`Mission`
 - :ref:`Open Source Project`

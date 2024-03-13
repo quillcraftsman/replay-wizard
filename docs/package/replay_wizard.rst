@@ -23,6 +23,14 @@ replay\_wizard.package module
    :undoc-members:
    :show-inheritance:
 
+replay\_wizard.storage module
+-----------------------------
+
+.. automodule:: replay_wizard.storage
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 

@@ -5,21 +5,21 @@ Using CLI
 ^^^^^^^^^
 
 To capture actions
-==================
+""""""""""""""""""
 
 .. code-block:: bash
 
    wizard-capture openyoutube
 
 To replay actions
-=================
+"""""""""""""""""
 
 .. code-block:: bash
 
    wizard-replay openyoutube -d 10 -t true
 
 To combine sequences
-=================
+""""""""""""""""""""
 
 .. code-block:: bash
 
@@ -29,13 +29,13 @@ Using python
 ^^^^^^^^^^^^
 
 To capture actions
-==================
+""""""""""""""""""
 
 .. literalinclude:: ../quickstart/capturing.py
    :pyobject: capture_actions
 
 To replay actions
-=================
+"""""""""""""""""
 
 .. literalinclude:: ../quickstart/replay.py
    :pyobject: replay_actions
