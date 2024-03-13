@@ -1,0 +1,35 @@
+name: Test PyPi package
+
+on:
+  workflow_run:
+    workflows: [ "Upload Python Package To pypi" ]
+    branches: [ "main" ]
+    types:
+      - completed
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11"]
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Delete local package
+      run: |
+        rm -rf ./replay_wizard
+    - name: Install package from PyPi
+      run: |
+        python -m pip install --upgrade pip
+        pip install -U replay-wizard
+    - name: Run pytest with xvfb
+      uses: coactions/setup-xvfb@v1
+      with:
+        run: make test
