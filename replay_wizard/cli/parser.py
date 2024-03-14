@@ -22,15 +22,23 @@ def str2bool(v):
     raise argparse.ArgumentTypeError('Boolean value expected.')
 
 
-def get_parser(command_name):
+def get_only_parser(command_name):
     """
-    Get argument parser
+    Get parser without params
     """
     parser = argparse.ArgumentParser(
         prog=command_name,
         description=PROGRAM_DESCRIPTION,
         epilog=f'Use {command_name} -h to get help'
     )
+    return parser
+
+
+def get_parser(command_name):
+    """
+    Get argument parser
+    """
+    parser = get_only_parser(command_name)
 
     parser.add_argument('sequence')
     return parser

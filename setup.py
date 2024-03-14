@@ -118,5 +118,6 @@ setup(
         get_entrypoint("wizard-capture", "capture"),
         get_entrypoint("wizard-replay", "replay"),
         get_entrypoint("wizard-combine", "combine"),
+        get_entrypoint("wizard-list", "sequence_list"),
     ]},
 )
