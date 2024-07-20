@@ -31,21 +31,19 @@ Be free to use, fork, clone and contribute.
 Features
 --------
 
-This features will be built during 4 weeks.
-20.03.2024 - deadline
-
 - Capture mouse actions (Done)
 - Save mouse actions (Done)
 - Replay mouse actions (Done)
 - Capture keyboards actions (Done)
 - Save keyboards actions (Done)
 - Replay keyboards actions (Done)
-- Capture environment
-- Save environment
-- Replay environment
 - Console script (Done)
 - python library API (Done)
 - Combine sequences (Done)
+- Capture environment (Plan)
+- Save environment (Plan)
+- Replay environment (Plan)
+
 
 Requirements
 ------------
